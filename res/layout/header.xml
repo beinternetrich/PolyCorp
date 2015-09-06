@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:layout_alignParentTop="true"
+    android:textSize="12sp"
+    android:textColor="#FFF"
+    android:background="@drawable/headerscore2"
+    android:gravity="center"
+    android:measureWithLargestChild="true"
+    style="@style/Base.TextAppearance.AppCompat.Large.Inverse">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_lblStats"
+        android:id="@+id/lblStats"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_lblLevel"
+        android:id="@+id/lblLevel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="XXXXXX"
+        android:id="@+id/iLevel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_lblXP"
+        android:id="@+id/lblXPS" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_iFill"
+        android:id="@+id/iXps" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_lblDozh"
+        android:id="@+id/lblDozh" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_iFill"
+        android:id="@+id/iDozh" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_lblJemz"
+        android:id="@+id/lblJemz" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:text="@string/stats_iFill"
+        android:id="@+id/iJemz" />
+
+    <Button
+        android:text="@string/btnGoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoMain"
+        android:onClick="selectFrag" />
+
+    <Button
+        android:text="@string/btnGoBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoBusiness"
+        android:onClick="selectFrag" />
+
+    <Button
+        android:text="@string/btnGoUtility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoUtility"
+        android:onClick="selectFrag" />
+</LinearLayout>

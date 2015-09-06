@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mmtechworks.polygam101.FragmentDefault"
+    android:layout_above="@id/footer"
+    android:layout_below="@id/header"
+    android:id="@+id/fragment_default"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:background="@drawable/shantytown"
+    >
+    <TextView
+        android:text="FragmentDefault"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/crumbMain"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/StoryText"
+        android:id="@+id/textStory"
+        android:layout_below="@+id/crumbMain"
+        android:background="#efefef"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="450dp">
+    <Button
+        android:text="@string/btnGoMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoMain"
+        android:onClick="selectFrag" />
+
+    <Button
+        android:text="@string/btnGoBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoBusiness"
+        android:onClick="selectFrag" />
+
+</LinearLayout>
+</RelativeLayout>

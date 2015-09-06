@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/footer"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:layout_alignParentBottom="true"
+    android:background="#FC0"
+    android:gravity="center"
+    tools:context="com.mmtechworks.polygam101.Footer">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Fixed Footer"
+        android:textColor="#000"
+        android:textSize="20sp" />
+</LinearLayout>
