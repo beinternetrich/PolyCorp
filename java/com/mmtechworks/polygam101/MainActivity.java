@@ -70,23 +70,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnLoginAccount: {
-                Log.v("LOG_MAINA-Login", "follows");
                 startActivity(new Intent(MainActivity.this, LoginAccountActivity.class));
+                Log.v("LOG_MainActi-Exising", "done......");
                 break;
             }
             case R.id.btnCreateAccount:{
-                Log.v("LOG_MAINA-Create", "follows");
                 startActivity(new Intent(MainActivity.this, CreateAccountActivity.class));
-                Log.v("LOG_MAINA-Create", "done");
+                Log.v("LOG_MainActi-Create", "done........");
                 break;
             }
             case R.id.btnListDatabases:{
-                Log.v("LOG_MAINA-ListDbs", "follows");
                 startActivity(new Intent(MainActivity.this, SysDatabaseList.class));
-                Log.v("LOG_MAINA-ListDbs", "done");
+                Log.v("LOG_MainActi-ListDbs", "done........");
                 break;
             }
         }
+        Log.v("LOG_MainAct", "End Reached... .... ..... ... ...");
     }
 
 

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PolyCorp101</string>
+    <string name="AppName">Poly Corp 101</string>
+    <string name="StoryText"><b>Hello Gamer</b> - For more info on this game visit the PolyCorp website.<p><b>This text is bold</b> <em>This text is emphasized</em> <code>This is computer output</code> This is<sub> subscript</sub> and <sup>superscript</sup></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non consequat arcu, sed malesuada massa. Quisque ligula lectus, iaculis eget finibus vestibulum, hendrerit sed massa. Nam ac risus congue, lobortis arcu eget, ornare elit. Integer elementum, ex eget dapibus rutrum, eros purus vestibulum nibh, nec faucibus nisi neque sed elit. Proin id posuere diam. Donec porta metus at nibh bibendum iaculis. Aliquam non felis ut purus interdum tempus maximus quis dolor. Nunc at metus nec tortor scelerisque facilisis id ac felis. Nullam tempus ipsum felis, sit amet porttitor neque sagittis ac.<br /><br />Nulla rutrum, est at tempor vehicula, lacus lacus elementum neque, sed aliquet sem risus fringilla purus. Duis bibendum libero eu mattis rutrum. Nunc sed dolor lobortis, placerat urna sit amet, aliquet elit. In eget ipsum euismod libero convallis vulputate a eu quam. Sed odio ex, efficitur nec iaculis vitae, aliquam nec dolor. Maecenas sollicitudin tincidunt semper. Curabitur justo odio, ultrices ut mi vitae, interdum convallis metus. Etiam velit leo, imperdiet et egestas sit amet, pharetra sed urna. Curabitur varius sapien mauris, quis consectetur odio viverra vitae. Fusce vel neque mollis, facilisis libero ut, iaculis mauris.</p></string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_story">StoryActivity</string>
+    <string name="title_activity_main">Poly_Corp</string>
+    <string name="title_fragment_business">FragmentBusiness</string>
+    <string name="title_fragment_main">FragmentMain</string>
+    <string name="title_fragment_utility">FragmentUtility</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="title_activity_utility">UtilityActivity</string>
+    <string name="title_activity_header">HeaderActivity</string>
+    <string name="greetingGamer">Hello </string>
+    <string name="requestGameName">Give yourself a game name!</string>
+    <string name="splashSave">Save Name</string>
+    <string name="splashContinue">Proceed</string>
+    <string name="btnGoMain">Go to Main</string>
+    <string name="btnGoBusiness">Go to Business</string>
+    <string name="btnGoUtility">Go to Utility</string>
+    <string name="btnGoSplash">Go to Splash</string>
+    <string name="stats_lblStats">STATS: </string>
+    <string name="stats_iFill" style="fontsize=20sp"># </string>
+    <string name="stats_lblLevel">Level</string>
+    <string name="stats_lblXP">XPs</string>
+    <string name="stats_lblDozh">Dozh</string>
+    <string name="stats_lblTips">Tips</string>
+    <string name="stats_lblJemz">Jemz</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="menu_settings">Settings</string>
+    <string name="title_activity_create_account">CreateAccountActivity</string>
+    <string name="title_activity_login_account">LoginAccountActivity</string>
+    <string name="title_activity_game">Main Game Screen</string>
+    <string name="title_activity_sync_items">SyncItemsActivity</string>
+    <string name="title_activity_sys_dblist">SystemDatabaseList</string>
+</resources>

@@ -19,7 +19,7 @@ public class LoginAccountActivity extends Activity {
     private EditText vfUsernameId;
     private EditText vfPasswordId;
     private Button vbtnLoginAccount;
-    protected boolean greenBop;
+    //protected boolean greenBop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +55,8 @@ public class LoginAccountActivity extends Activity {
                     contYN = controller.pullDomUser(getUsername, getPassword);
                     if (contYN){
                         Intent i = new Intent(getApplicationContext(), GameActivity.class);
-                        i.putExtra("greenBop", true);
                         controller.onCompleteI(getUsername,i);
                         startActivity(i);
-
 
                     } else {
                         Log.v("LOG_Log-Fail", "75Find Fail. Close and Go Back.");

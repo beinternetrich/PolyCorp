@@ -158,7 +158,7 @@ public class SyncItemsActivity extends ActionBarActivity {
 					//String last_name = jsonData.getString("last_name");
 
 					// Insert User into SQLite DB
-					controller.insertLiteUser(queryValues);
+					controller.insertupdateLiteUser(queryValues);
 					HashMap<String, String> map = new HashMap<String, String>();
 					// Add status for each User in Hashmap
 					map.put("customer_id", jsonData.get("customer_id").toString());

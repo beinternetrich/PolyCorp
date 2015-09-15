@@ -38,6 +38,8 @@ import model.MyBusiness;
 public class DatabaseHandler extends SQLiteOpenHelper {
     private final ArrayList<MyBusiness> businessList = new ArrayList<>();
     HashMap<String, String> queryValues;
+    boolean nuGamer;
+
     //Parse.enableLocalDatastore(this);
     //Parse.initialize(this, Constants.APP_KEY_ID, Constants.APP_CLIENT_ID);
 
@@ -82,6 +84,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     public boolean processDomUser(String action, final String getUsername, final String getPassword, final String getEmail) {
         //Boolean response;
+        if (action=="add") {nuGamer=true;}
+        Log.v("LOG_GA_NuGamer88", String.valueOf(nuGamer));
         String[] params = {action + "-user:", getEmail, getPassword, getUsername};
         String POST_PARAMS = "email=" + params[1] + "&password=" + params[2] + "&username=" + params[3];
         //Create/Get db row===========================================
@@ -112,7 +116,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 try {
                     Log.v("LOG_DBH118", "RespCode: " + conn.getResponseCode());
                 } catch (IOException e) {
-                    Log.v("LOG_DBH122", "Expected Response 200 - Failed");
+                    Log.v("LOG_DBH119", "Expected Response 200 - Failed");
                     e.printStackTrace();
                 }
             }
@@ -121,7 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 try {
                     in = new BufferedInputStream(conn.getInputStream());
                     String response = IOUtils.toString(in, "UTF-8");
-                    Log.e("LOG_DBH122", response);
+                    Log.e("LOG_DBH128", response);
                     if (response.toLowerCase().contains("success")) {return true;} else {return false;}
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -134,10 +138,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }  //end processDomUser() + return T/F
 
     public boolean pullDomUser(final String getUsername,final String getPassword){
-        Log.v("LOG_PULLDUSER", "Getting Account Info");
         String[] params = {"get-user:", getUsername, getPassword};
         String POST_PARAMS = "username=" + params[1] + "&password=" + params[2];
-        Log.v("LOG_PULLDUSER139", "Params: "+POST_PARAMS );
+        Log.v("LOG_PULLDOM139", "Pulling DOM Info for Params: "+POST_PARAMS );
         //Retrieve db row===========================================
 
 
@@ -159,7 +162,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if (true) {
                 try {Log.v("LOG_DBH159", "RespCode: " + conn.getResponseCode());
                 } catch (IOException e) {
-                    Log.v("LOG_DBH161", "Expected Response 200 - Failed");
                     e.printStackTrace();}}
             InputStream in = null;
             if (true) {
@@ -186,7 +188,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {return false;}
     }  //end pullDOMUser() + parseForLiteUser()
 	public void parseForLiteUser(String result){
-		Log.v("LOG_DBH", "Running parseForLiteUser....");
+		Log.v("LOG_DBH189", "Running parseForLiteUser....");
         try {
             // Extract JSON array from the response
             JSONArray jArray = new JSONArray(result);
@@ -207,18 +209,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     queryValues.put("game_jmz",   jsonData.get("game_jmz").toString());
                     queryValues.put("game_tps",   jsonData.get("game_tps").toString());
 
-                    Log.v("LOG_DBH", "Starting InsertLiteUser");
+                    Log.v("LOG_DBH210", ">> INSERT or UPDATE LITE USER...............");
                     try {
-                        insertLiteUser(queryValues);
+                        insertupdateLiteUser(queryValues);
                     } catch(Exception e) {}
                 }
             } else {/*array.length=0. No users found.*/}
         } catch (JSONException e) {e.printStackTrace();}
     } //parseForLiteUser() + insertLiteUser()
-    public boolean insertLiteUser(HashMap<String, String> queryValues) {
-        Log.v("LOG_DBH", "Running insertLiteUser...");
+    public boolean insertupdateLiteUser(HashMap<String, String> queryValues) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.v("LOG_DBH", "Values: "+String.valueOf(queryValues));
+        Log.v("LOG_DBH221", "Values: " + String.valueOf(queryValues));
         ContentValues values = new ContentValues();
         values.put("customer_id",queryValues.get("customer_id"));
         values.put("last_name",  queryValues.get("last_name"));
@@ -228,31 +229,37 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put("game_dzh",   queryValues.get("game_dzh"));
         values.put("game_jmz", queryValues.get("game_jmz"));
         values.put("game_tps", queryValues.get("game_tps"));
-        Log.v("LOG_DBH", "Calling: db.insert to table....");
         try {
-            db.insert("gam_CubeCart_customer", null, values);
+            if (nuGamer){
+                Log.v("LOG_DBH235", "Calling: db.INSERT in table for newbie");
+                db.insert("gam_CubeCart_customer", null, values);
+            } else {
+                String strWhereFilter = "customer_id=" + queryValues.get("customer_id");
+                db.update("gam_CubeCart_customer", values, strWhereFilter, null);
+                Log.v("LOG_DBH235", "Calling: db.UPDATE to table: " + strWhereFilter);
+            }
+            Log.v("LOG_DBH231", "INSERT / UPDATE done=-=-=-=-=-=-=-=..");
             db.close();
             syncLiteUser(queryValues.get("customer_id"));
             return true;
         } catch(Exception e) {
             db.close();
-            Log.v("LOG_DBH", "db.insert to LITE - FAILED.");
+            Log.v("LOG_DBH", "db.insert/update to LITE - FAILED.");
             return false;
         }
     } //insertLiteUser() >> Boolean
 
     public void onCompleteI(String getUsername, Intent i) {
-        //Intent i = new Intent(getApplicationContext(), GameActivity.class);
         HashMap<String, String> queryValues = getLiteUser(getUsername);
+        //Add the following to the already existing intent which contains:
+        //i.putExtra("game_new", "true");
         i.putExtra("game_name", queryValues.get("game_name"));
+        //i.putExtra("game_ttl", queryValues.get("game_ttl"));
         i.putExtra("game_lvl", queryValues.get("game_lvl"));
         i.putExtra("game_xps", queryValues.get("game_xps"));
         i.putExtra("game_dzh", queryValues.get("game_dzh"));
         i.putExtra("game_jmz", queryValues.get("game_jmz"));
         i.putExtra("game_tps", queryValues.get("game_tps"));
-        i.putExtra("game_values", queryValues.toString());
-        //Log.v("LOG", "Launching GameActivity: " + i.getStringExtra("game_values"));
-        //startActivity(i);
     }
 
     public boolean updateLiteUser(HashMap<String, String> queryValues) {

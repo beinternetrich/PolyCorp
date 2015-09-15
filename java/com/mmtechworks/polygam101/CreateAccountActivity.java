@@ -63,6 +63,7 @@ public class CreateAccountActivity extends Activity {
                     if (contYN){
                         controller.pullDomUser(getUsername, getPassword);
                         Intent i = new Intent(getApplicationContext(), GameActivity.class);
+                        i.putExtra("game_new", "true");
                         controller.onCompleteI(getUsername,i);
                         startActivity(i);
                     } else {

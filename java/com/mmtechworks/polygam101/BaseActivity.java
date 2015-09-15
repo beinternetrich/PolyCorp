@@ -86,29 +86,24 @@ abstract class BaseActivity extends Activity {
     }
 
     protected void setHeading(HashMap<String, String> hssGameValues) {
-        Log.v("LOG_BAsetHdJMZ95", ""+hssGameValues.get("game_jmz"));
-        Log.v("LOG_BA97", "95-SettingHead....NULLgettext");
         if(showDzh == null) {
-            //greenBop savedInstanceState.putBoolean("bolStorGrn", greenBop);
-            //Log.v("LOG_Ba93SetHead-Greenie", String.valueOf(greenBop));
             //showTtl = (TextView) findViewById(R.id.sTitle);
             showLvl = (TextView) findViewById(R.id.iLevel);
             showXps = (TextView) findViewById(R.id.iXps);
             showDzh = (TextView) findViewById(R.id.iDozh);
             showJmz = (TextView) findViewById(R.id.iJemz);
             showTps = (TextView) findViewById(R.id.iLevel);
-            Log.v("LOG_BA106", "103-Heading...ifNULL....#"+showJmz.getText());
+            Log.v("LOG_BA96", "JMZ set next from #>"+showJmz.getText());
         }
 		//change to else
         if(showDzh != null) {
-            Log.v("LOG_BA110", "111-Heading...NotNULL....#" + showJmz.getText());
-            //Log.v("LOG_Ba105SetHd-Greenie", String.valueOf(greenBop));
             //showTtl.setText(hssGameValues.get("game_ttl"));
             showLvl.setText(hssGameValues.get("game_lvl"));
             showXps.setText(hssGameValues.get("game_xps"));
             showDzh.setText(hssGameValues.get("game_dzh"));
             showJmz.setText(hssGameValues.get("game_jmz"));
             showTps.setText(hssGameValues.get("game_tps"));
+            Log.v("LOG_BA106", "HeadVals set-1");
         }
     }
 }
