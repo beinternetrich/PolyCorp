@@ -29,12 +29,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import data.DatabaseHandler;
+import data.DBaseAdapter;
 import util.SampleBC;
 
 public class SyncItemsActivity extends ActionBarActivity {
 	// DB Class to perform DB related operations
-	DatabaseHandler controller = new DatabaseHandler(this);
+	DBaseAdapter controller = new DBaseAdapter(this);
 	// Progress Dialog Object
 	ProgressDialog prgDialog;
 	HashMap<String, String> queryValues;

@@ -15,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.mmtechworks.flexibleadapter.R;
+import com.mmtechworks.polygam101.R;
 
-import utils.Utils;
+import util.Utils;
 
 
 public class EditItemDialog extends DialogFragment {

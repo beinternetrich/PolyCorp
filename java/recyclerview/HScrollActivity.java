@@ -19,23 +19,21 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mmtechworks.flexibleadapter.MessageDialog;
-import com.mmtechworks.flexibleadapter.R;
+import com.mmtechworks.polygam101.MessageDialog;
+import com.mmtechworks.polygam101.R;
 
-import utils.Utils;
+import util.Utils;
 
 public class HScrollActivity extends AppCompatActivity implements
 		ActionMode.Callback, EditItemDialog.OnEditItemListener,
 		ExampleAdapter.OnItemClickListener {
 
 	public static final String TAG = HScrollActivity.class.getSimpleName();
-
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * activated item position. Only used on tablets.
 	 */
 	private static final String STATE_ACTIVATED_POSITION = "activated_position";
-
 	/**
 	 * The current activated item position.
 	 */

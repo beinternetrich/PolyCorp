@@ -33,6 +33,7 @@ public abstract class FlexibleAdapter<VH extends RecyclerView.ViewHolder, T> ext
 	 * synchronized on this lock.
 	 */
 	private final Object mLock = new Object();
+	//private final Object mLock = new Product("name","desc_short",3,null);
 
 	protected List<T> mItems;
 	protected List<T> mDeletedItems;
