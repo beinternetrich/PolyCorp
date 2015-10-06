@@ -1,5 +1,6 @@
-package com.mmtechworks.polygam101;
+package startup;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -9,13 +10,17 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
-import data.DatabaseHandler;
+import com.mmtechworks.polygam101.GameActivity;
+import com.mmtechworks.polygam101.R;
+
+import data.DBaseAdapter;
 
 public class CreateAccountActivity extends Activity {
-    DatabaseHandler controller = new DatabaseHandler(this);
+    DBaseAdapter controller = new DBaseAdapter(this);
     private EditText vfEmailId;
     private EditText vfUsernameId;
     private EditText vfPasswordId;
@@ -24,6 +29,7 @@ public class CreateAccountActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         setContentView(R.layout.activity_create_account);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -53,9 +59,9 @@ public class CreateAccountActivity extends Activity {
                 } else {
                     boolean contYN=false;
                     try {
-                        contYN = controller.processDomUser("add", getUsername, getPassword, getEmail);
+                        contYN = controller.addDomUser(getUsername, getPassword, getEmail);
                     } catch (SQLiteConstraintException e) {
-                        Log.v("LOG_CREATE", "==================Caught Exception: Email already exists. Please Login instead");
+                        Log.v("LOG_CREATE", "Caught Exception: Email already exists. Please Login instead");
                     } catch(Exception e) {
                         Log.v("LOG_CREATE", "CatchAll Exception: Caught");
                     }
@@ -81,5 +87,7 @@ public class CreateAccountActivity extends Activity {
                 }
             }
         });
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null) actionBar.setTitle("PolyCorp: "+"New Member");
     }
 }

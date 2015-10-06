@@ -21,6 +21,7 @@ public class SysDatabaseList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         setContentView(R.layout.activity_sys_dblist);
 
         ArrayList<String> dbFilesArrList = getDBFILES();

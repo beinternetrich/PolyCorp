@@ -1,0 +1,12 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/text1"
+    android:text="empty"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:singleLine="false"
+    android:layout_gravity="center"
+    android:gravity="left|center_vertical"
+    android:textSize="@dimen/abc_text_size_large_material"
+    android:textStyle="bold"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:paddingLeft="50dp" />

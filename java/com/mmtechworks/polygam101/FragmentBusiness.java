@@ -12,7 +12,7 @@ public class FragmentBusiness extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_business, container, false);
-        Drawable bg = getResources().getDrawable(R.drawable.shantytown);
+        Drawable bg = getResources().getDrawable(R.drawable.carwashauto);
         RelativeLayout relativeLayout = (RelativeLayout)view.findViewById(R.id.fragment_business);
         relativeLayout.setBackground(bg);
         //return inflater.inflate(R.layout.fragment_utility, container, false);

@@ -2,6 +2,7 @@ package com.mmtechworks.polygam101;
 
 //import android.content.SharedPreferences;
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,34 +12,19 @@ import android.view.View;
 
 import java.util.HashMap;
 
-import scratch.WScratchView;
-
+import startup.StoryDialog;
 
 public class GameActivity extends BaseActivity {
     String strGameValues;
     HashMap<String, String> hGameValues = new HashMap<>();
     boolean nuGamer;
 
-    private WScratchView scratchView;
+    //private WScratchView scratchView;
 
     public void onCreate(Bundle savedInstanceState) {
-		Log.v("LOG_GA18", "GA-Calling super.onCreate...");
         super.onCreate(savedInstanceState);
-
-        Log.v("LOG_GA_Scratch70", "WAT SHOWING PRE SETCONTENT");
+        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         setContentView(R.layout.activity_game);
-        Log.v("LOG_GA_Scratch68", "WHAT SHOWING AFTER SETCONTENT");
-        FragmentScratch showScratchFrag = new FragmentScratch();
-        showScratchFrag.setRetainInstance(true);
-        //xFragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_main, showScratchFrag, "MY_FRAGTAG");
-        fragmentTransaction.addToBackStack("MY_FRAGTAG");
-        Log.v("LOG_GA_Scratch68", "WHAT SHOWING precommit");
-        fragmentTransaction.commit();
-        Log.v("LOG_GA_Scratch70", "AApostcommit");
-        //setContentView(R.layout.activity_game);
-        Log.v("LOG_GA_Scratch72", "AApostsetcontntview");
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -47,8 +33,7 @@ public class GameActivity extends BaseActivity {
             else {
                 //this follows dbh:completei(). Now split for setHead
                 nuGamer = Boolean.valueOf(extras.getString("game_new"));
-                strGameValues = extras.toString();   //extras.getString("game_values");
-                //Log.v("LOG_GA31", "EXTRAS: "+extras.toString());
+                strGameValues = extras.toString();
                 strGameValues = strGameValues.substring(8, strGameValues.length()-2); //remove curly braces
                  Log.v("LOG_GA35", "EXTRAS: "+strGameValues);
                  String[] keyValuePairs = strGameValues.split(",");         //split string for key-value pairs
@@ -58,26 +43,38 @@ public class GameActivity extends BaseActivity {
                 }
             }
         } else {
-            Log.v("LOG_GA40", "Intent not NULL. Getting SavedSerialized");
             savedInstanceState.getSerializable("game_values");
-// // // // //ABOVE CALLED IN RESTORE SO NOT NECESSARY HERE. IS IT????
         }
 
-        //setContentView(R.layout.activity_game);
-
-        Log.v("LOG_GA48", "HeadVals: " + hGameValues.toString());
-        setHeading(hGameValues);
 
         Log.v("LOG_GA_ShowStory", String.valueOf(nuGamer));
         if (nuGamer){
-            Log.v("LOG_GA_53", "HeadVals set-3. Onto Dialog");
-            //FragmentManager fm = getFragmentManager();
+            FragmentScratch goScratchFrag = new FragmentScratch();
+            goScratchFrag.setRetainInstance(true);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_main, goScratchFrag, "MY_FRAGTAG");
+            fragmentTransaction.addToBackStack("MY_FRAGTAG");
+            fragmentTransaction.commit();
+            Log.v("LOG_GA_Scratch70", "AApostcommit");
+
+
             StoryDialog storyDialog = new StoryDialog();
             storyDialog.setRetainInstance(true);
             storyDialog.show(getFragmentManager(), "activity_storydialog");
             Log.v("LOG_GA58-TOGL", String.valueOf(nuGamer));
-            //nuGamer=false;
+            nuGamer=false;
+        } else {
+            FragmentMain goMainFrag = new FragmentMain();
+            goMainFrag.setRetainInstance(true);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_main, goMainFrag, "MY_FRAGTAG");
+            fragmentTransaction.addToBackStack("MY_FRAGTAG");
+            fragmentTransaction.commit();
+            Log.v("LOG_GA_Scratch70", "AApostcommit");
         }
+
+        Log.v("LOG_GA48", "HeadVals: " + hGameValues.toString());
+        setHeading(hGameValues);
 
         //String myDataArray[];
         //get data back from SharedPreferences
@@ -92,6 +89,8 @@ public class GameActivity extends BaseActivity {
 //        }
 
 //===========================
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null) actionBar.setTitle("Is whe da magic appens!!! (Prefs)");
     }
 
     @Override
@@ -104,7 +103,7 @@ public class GameActivity extends BaseActivity {
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         // Restore UI state from the savedInstanceState. Bundle passed to onCreate.
-        Log.v("LOG_GA89", "Called super.onRestoreI ok."+showJmz.getText());
+        Log.v("LOG_GA89", "Called super.onRestoreI ok." + showJmz.getText());
     }
 
 
@@ -124,8 +123,12 @@ public class GameActivity extends BaseActivity {
             case R.id.btnGotoScratch:
                 frag = new FragmentScratch();
                 break;
+            case R.id.btnGotoMarket:
+                //Intent i = new MyBusinessList();
+                frag = new FragmentMain();
+                break;
             default:
-                frag = new FragmentScratch();
+                frag = new FragmentMain();
                 break;
         }
 
@@ -134,19 +137,6 @@ public class GameActivity extends BaseActivity {
         fragmentTransaction.replace(R.id.fragment_main, frag, "MY_FRAGTAG");
         fragmentTransaction.addToBackStack("MY_FRAGTAG");
         fragmentTransaction.commit();
-    }
-
-    public void selectRepaint(View view) {
-        scratchView = (WScratchView)view.findViewById(R.id.scratch_view);
-        switch (view.getId()) {
-            case R.id.reset_button:
-                Log.v("LOG_GA_Scratch22", "second on Reset2 DELETE OTHER RESET");
-                scratchView.resetView();
-                scratchView.setScratchAll(false); // todo: should include to resetView?
-                FragmentScratch fs=new FragmentScratch();
-                fs.updatePercentage(0f);
-                break;
-        }
     }
 
     @Override

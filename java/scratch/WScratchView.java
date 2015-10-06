@@ -44,13 +44,14 @@ import java.util.List;
  * @author mmtechworks
  */
 public class WScratchView extends SurfaceView implements IWScratchView, SurfaceHolder.Callback {
-	private static final String TAG = "WScratchView";
+	//private static final String TAG = "WScratchView";
+	private static final String TAG = WScratchView.class.getSimpleName();
 
 	// default value constants
 	private final int DEFAULT_COLOR = 0xff444444; // default color is dark gray
 	private final int DEFAULT_REVEAL_SIZE = 90;  //30 originally
 	
-	public static final int DEFAULT_SCRATCH_TEST_SPEED = 4; //4 originally
+	public static final int DEFAULT_SCRATCH_TEST_SPEED = 1; //4 originally
 
 	private Context mContext;
 	private WScratchViewThread mThread;

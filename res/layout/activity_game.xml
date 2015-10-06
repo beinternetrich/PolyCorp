@@ -1,0 +1,26 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="0dp"
+    android:layout_margin="0dp"
+    android:background="#00000000"
+    tools:context=".GameActivity"
+    >
+
+<!-- Header aligned to top -->
+<include layout="@layout/header"
+    android:id="@+id/header" />
+
+<!-- Footer aligned to bottom -->
+<include layout="@layout/footer"
+    android:id="@+id/footer" />
+
+
+<!-- Fragment VerticalCentred -->
+<include layout="@layout/fragment_main"
+    android:tag="MY_FRAGTAG"
+    android:id="@+id/fragment_main" />
+
+</RelativeLayout>

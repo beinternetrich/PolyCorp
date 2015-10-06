@@ -1,23 +1,32 @@
 package com.mmtechworks.polygam101;
 //import android.content.Context;
 //import android.content.SharedPreferences;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
+import model.CreateProductActivity;
+import recyclerview.RecyclerViewActivity;
+import startup.CreateAccountActivity;
+import startup.LoginAccountActivity;
 import util.SysDatabaseList;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button buttonLoginAccount;
     private Button buttonCreateAccount;
     private Button buttonListDatabases;
+    private Button buttonListRecyclers;
+    private Button buttonAddProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         setContentView(R.layout.activity_letsbegin);
 
         buttonCreateAccount = (Button) findViewById(R.id.btnCreateAccount);
@@ -26,6 +35,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
         buttonLoginAccount.setOnClickListener(this);
         buttonListDatabases = (Button) findViewById(R.id.btnListDatabases);
         buttonListDatabases.setOnClickListener(this);
+        buttonListRecyclers = (Button) findViewById(R.id.btnListRecyclers);
+        buttonListRecyclers.setOnClickListener(this);
+        buttonAddProducts = (Button) findViewById(R.id.btnAddProduct);
+        buttonAddProducts.setOnClickListener(this);
 
 ///*
 //        TextView showUName  = (TextView) findViewById(R.id.showGameName);
@@ -63,7 +76,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //            Toast.makeText(getApplicationContext(), "Read from file was NULL", Toast.LENGTH_LONG).show();
 //        }
 //*/
-
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null) actionBar.setTitle("PolyCorp v0.9 by Marcy :)");
     }
 
     @Override
@@ -81,7 +95,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
             case R.id.btnListDatabases:{
                 startActivity(new Intent(MainActivity.this, SysDatabaseList.class));
-                Log.v("LOG_MainActi-ListDbs", "done........");
+                Log.v("LOG_ListDbs", "done........");
+                break;
+            }
+            case R.id.btnListRecyclers:{
+                Log.v("LOG_ListVus", "Wa wa waaaaaaa");
+                startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
+                Log.v("LOG_ListVus", "done........");
+                break;
+            }
+            case R.id.btnAddProduct:{
+                Log.v("LOG_ListBiz", "BusinessssAdd");
+                startActivity(new Intent(MainActivity.this, CreateProductActivity.class));
+                Log.v("LOG_ListBs", "done........");
                 break;
             }
         }

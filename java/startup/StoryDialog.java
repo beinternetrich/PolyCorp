@@ -1,4 +1,4 @@
-package com.mmtechworks.polygam101;
+package startup;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.mmtechworks.polygam101.R;
 
 public class StoryDialog extends DialogFragment {
     TextView storyBox;

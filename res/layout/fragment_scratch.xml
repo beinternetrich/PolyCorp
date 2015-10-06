@@ -49,17 +49,7 @@
         android:layout_marginTop="450dp">
 
         <Button
-            android:id="@+id/reset_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/layout_margin"
-            android:layout_marginBottom="14dp"
-            android:onClick="selectRepaint"
-            android:text="Reset" />
-
-        <Button
-            android:text="@string/btnGoMain"
+            android:text="Scratch Again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layout_margin"

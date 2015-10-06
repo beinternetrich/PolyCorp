@@ -54,6 +54,14 @@
         android:layout_margin="@dimen/layout_margin"
         android:id="@+id/btnGotoScratch"
         android:onClick="selectFrag" />
+
+    <Button
+        android:text="GoPfMkt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:id="@+id/btnGotoMarket"
+        android:onClick="selectFrag" />
     </LinearLayout>
 
 </RelativeLayout>

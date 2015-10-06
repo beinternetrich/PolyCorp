@@ -45,9 +45,33 @@
         android:backgroundTint="@android:color/holo_blue_dark" />
 
     <Button
-        android:text="List System Databases"
-        android:id="@+id/btnListDatabases"
-        android:layout_below="@+id/btnCreateAccount"
+    android:text="List System Databases"
+    android:id="@+id/btnListDatabases"
+    android:layout_below="@+id/btnCreateAccount"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:layout_centerHorizontal="true"
+    android:textColor="@android:color/white"
+    android:background="@android:color/holo_red_light"
+    android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="List Recycler Views"
+        android:id="@+id/btnListRecyclers"
+        android:layout_below="@+id/btnListDatabases"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_light"
+        android:backgroundTint="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="Add Product"
+        android:id="@+id/btnAddProduct"
+        android:layout_below="@+id/btnListRecyclers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"

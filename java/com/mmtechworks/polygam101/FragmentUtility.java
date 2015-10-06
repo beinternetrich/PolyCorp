@@ -12,7 +12,7 @@ public class FragmentUtility extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_utility, container, false);
-        Drawable bg = getResources().getDrawable(R.drawable.wipcarwashauto);
+        Drawable bg = getResources().getDrawable(R.drawable.shantytown);
         RelativeLayout relativeLayout = (RelativeLayout)view.findViewById(R.id.fragment_utility);
         relativeLayout.setBackground(bg);
         //return inflater.inflate(R.layout.fragment_utility, container, false);

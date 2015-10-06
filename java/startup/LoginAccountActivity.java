@@ -1,5 +1,6 @@
-package com.mmtechworks.polygam101;
+package startup;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,14 +9,17 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.mmtechworks.polygam101.GameActivity;
+import com.mmtechworks.polygam101.R;
 
-import data.DatabaseHandler;
+import data.DBaseAdapter;
 
 public class LoginAccountActivity extends Activity {
-    DatabaseHandler controller = new DatabaseHandler(this);
+    DBaseAdapter controller = new DBaseAdapter(this);
     private EditText vfUsernameId;
     private EditText vfPasswordId;
     private Button vbtnLoginAccount;
@@ -24,6 +28,7 @@ public class LoginAccountActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         setContentView(R.layout.activity_login_account);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -59,7 +64,7 @@ public class LoginAccountActivity extends Activity {
                         startActivity(i);
 
                     } else {
-                        Log.v("LOG_Log-Fail", "75Find Fail. Close and Go Back.");
+                        Log.v("LOG_Login", "Fail. Close and Go Back.");
                         dialog.setTitle("Existing Account Search Failure");
                         dialog.setMessage("An account of those creds does not exist for this creds. Try to login again");
                         dialog.setPositiveButton("Close", new DialogInterface.OnClickListener() {
@@ -73,5 +78,7 @@ public class LoginAccountActivity extends Activity {
                 }
             }
         });
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null) actionBar.setTitle("PolyCorp: "+"Existing Member");
     }
 }

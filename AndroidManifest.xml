@@ -2,13 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mmtechworks.polygam101" >
 
-    <!--
-        permission
-        android:name="edu.bloomu.huskies.tsc71523.skatelogger.MAPS_RECEIVE"
-        android:protectionLevel="signature" /
-    -->
+    <permission android:name="android.permission.RECORD_AUDIO"></permission>
 
-    <!-- uses-permission android:name="edu.bloomu.huskies.tsc71523.skatelogger.MAPS_RECEIVE" / -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -20,41 +15,43 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.MAIN"/>
+            android:name="recyclerview.RecyclerViewActivity"
+            android:label="RecyclerView" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="recyclerview.basiclist.BasicListActivity"></activity>
+        <activity android:name="recyclerview.foldablelist.FoldableListActivity"></activity>
+        <activity android:name="recyclerview.sectionlist.SectionListActivity"></activity>
+        <activity android:name="recyclerview.HScrollActivity"></activity>
+        <activity android:name="model.CreateProductActivity"></activity>
         <activity
-            android:name=".StoryActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:label="@string/title_activity_story" >
-        </activity>
-        <activity
-            android:name=".UtilityActivity"
-            android:label="@string/title_activity_utility" >
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".GameActivity"
             android:label="@string/title_activity_game" >
-            <!--fragment
-                android:name=".FragmentMain"
-                android:label="@string/title_fragment_main" >
-            </fragment-->
-            <!--fragment
-                android:name=".FragmentBusiness"
-                android:label="@string/title_fragment_business" >
-            </fragment-->
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".CreateAccountActivity"
+            android:name="startup.CreateAccountActivity"
             android:label="@string/title_activity_create_account" >
         </activity>
         <activity
-            android:name=".LoginAccountActivity"
+            android:name="startup.LoginAccountActivity"
             android:label="@string/title_activity_login_account" >
         </activity>
         <activity
@@ -65,15 +62,16 @@
             android:name="util.SysDatabaseList"
             android:label="@string/title_activity_sys_dblist">
         </activity>
-        <!--activity
-            android:name="scratch.ImageOverlayDrawable"
-            android:label="Image Overlay Drawable (Experimental)" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name="util.MyBusinessList"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="BUSINESS LIST">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="com.mmtechworks.scratchview.SAMPLE" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity-->
+        </activity>
     </application>
 
 </manifest>

@@ -1,30 +1,25 @@
 package com.mmtechworks.polygam101;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.TextView;
 
 import java.util.HashMap;
 
 
 abstract class BaseActivity extends Activity {
-    //protected boolean greenBop;
     protected TextView showTtl;
     protected TextView showLvl;
     protected TextView showXps;
     protected TextView showDzh;
     protected TextView showJmz;
     protected TextView showTps;
-//    String strStorLvl;
-//    String strStorXps;
-//    String strStorDzh;
-//    String strStorJmz;
-//    String strStorTps;
-//    //HashMap<String, String> gssGameValues;
 
     public void onCreate(Bundle savedInstanceState) {
-        Log.v("LOG_BA26", "FROM:GA-Calling super.onCreate. BA-Calling super.onCreate SaveI");
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR); //if utilizing actionBar.setTitle
         super.onCreate(savedInstanceState);
         Log.v("LOG_BA28", "BA-End Calling super.onCreate SaveI");
 //        String s = getJSONFile();
@@ -50,6 +45,8 @@ abstract class BaseActivity extends Activity {
         //ArrayAdapter<String> stringAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.row,myDataArray);
  //       if(showXP != null){ showXP.setText("Y" + showXP.getText()); }
  //       if(showXP == null){ showXP.setText("N" + showXP.getText()); }
+        ActionBar actionBar = getActionBar();
+        if(actionBar!=null) actionBar.setTitle("Surplus...");
     }
 
     @Override
@@ -74,8 +71,6 @@ abstract class BaseActivity extends Activity {
         super.onRestoreInstanceState(savedInstanceState);
         Log.v("LOG_Ba81RestorI", "Called super.onRestore ok");
         // Restore UI from savedInstanceState. Bundle passed to onCreate.
-        //greenBop savedInstanceState.putBoolean("bolStorGrn", greenBop);
-        //Log.v("LOG_Ba78RestorI-Greenie", String.valueOf(greenBop));
         //showTtl.setText(savedInstanceState.getString("strStorTtl"));
         showLvl.setText(savedInstanceState.getString("strStorLvl"));
         showXps.setText(savedInstanceState.getString("strStorXps"));

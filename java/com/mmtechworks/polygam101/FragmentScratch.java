@@ -21,7 +21,6 @@ public class FragmentScratch extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Inflate the layout for this fragment then return
-        // //////////////return inflater.inflate(R.layout.fragment_scratch, container, false);
         View view = inflater.inflate(R.layout.fragment_scratch, container, false);
         Drawable bg = getResources().getDrawable(R.drawable.mainroom02);
         RelativeLayout relativeLayout = (RelativeLayout)view.findViewById(R.id.fragment_scratch);
@@ -34,20 +33,17 @@ public class FragmentScratch extends Fragment {
 
         // set drawable to scratchview
         scratchView.setScratchDrawable(getResources().getDrawable(R.drawable.mainroom01));
-        Log.v("LOG_GA_Scratch22", "3getdrawable mainroom01");
 
         // add callback for update scratch percentage
         scratchView.setOnScratchCallback(new WScratchView.OnScratchCallback() {
             @Override
             public void onScratch(float percentage) {
-                Log.v("LOG_GA_Scratch22", "35-on scratch of 01");
                 updatePercentage(percentage);
             }
 
             @Override
             public void onDetach(boolean fingerDetach) {
                 if (mPercentage > 50) {
-                    Log.v("LOG_GA_Scratch22", "42 ondetach of 01");
                     scratchView.setScratchAll(true);
                     updatePercentage(100);
                 }
@@ -58,10 +54,11 @@ public class FragmentScratch extends Fragment {
         return view;
     }
 
+
     protected void updatePercentage(float percentage) {
         mPercentage = percentage;
-        Log.v("LOG_GA_Scratch22", "Updateing percentatge");
         String percentage2decimal = String.format("%.2f", percentage) + " %";
+        Log.v("LOG_GA_Scratch22", "Painted: " + percentage2decimal);
         percentageView.setText(percentage2decimal);
     }
 }

@@ -6,12 +6,12 @@
     android:padding="0dp"
     android:layout_margin="0dp"
     android:layout_alignParentTop="true"
-    android:textSize="12sp"
+    android:textSize="8sp"
     android:textColor="#FFF"
     android:background="@drawable/headerscore2"
     android:gravity="center"
-    android:measureWithLargestChild="true"
-    style="@style/Base.TextAppearance.AppCompat.Large.Inverse">
+    android:measureWithLargestChild="false"
+    style="@style/Base.TextAppearance.AppCompat.Medium.Inverse">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin"
-        android:text="XXXXXX"
+        android:text="XXX"
         android:id="@+id/iLevel" />
 
     <TextView
